@@ -1,24 +1,43 @@
 import logo from './logo.svg';
 import './App.css';
 
+import {useHistory} from "react-router-dom"
+import { useEffect, useState } from 'react';
+
+import { supabase } from './supaBaseClient';
+
+import {} from './'
+import Opportunity from './opportunity';
+import AddNewOpportunity from './AddNewOpportunity';
+import SignUpPage from './SignUpPage'
+import LoginPage from './Login';
+
+import { BrowserRouter as Router,Route, Routes } from 'react-router-dom';
+
 function App() {
+
+  
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+
+     <Router>
+
+      <div>
+        <Routes>
+
+            <Route path='/login' Component={LoginPage} />
+            <Route path='/signUp' Component={SignUpPage}/>
+            <Route path='/add-opportunity' Component={AddNewOpportunity} />
+            <Route path='/' Component={Opportunity} />
+
+            <Route path='/*' Component={LoginPage} />
+
+        </Routes>
+      </div>
+
+     </Router>
+   
   );
 }
 
