@@ -1,11 +1,16 @@
 // src/LoginPage.js
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { supabase } from './supaBaseClient';
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "./contexts/authContext";
 
 
 
 const LoginPage = () => {
-    var user;
+
+    const { user, setUser } = useContext(AuthContext);
+    const navigate = useNavigate()
+
     var error;
     var session
 
@@ -24,6 +29,13 @@ const LoginPage = () => {
         }));
     };
 
+    useEffect(() => {
+        if (user) {
+            localStorage.setItem("user", JSON.stringify(user))
+            navigate("/add-opportunity")
+        }
+    }, [user])
+
     const handleLogin = async (event) => {
         event.preventDefault();
 
@@ -32,25 +44,24 @@ const LoginPage = () => {
         await supabase.auth.signInWithPassword({
             email: loginData.email,
             password: loginData.password,
+
         }).then(({ data, error }) => {
             if (error) {
                 alert('cant login ' + error.message);
             }
             else
                 if (data.user) {
-                    user = data.user;
                     session = data.session;
-                    console.log(user);
-                    console.log(session);
-                    supabase.from(loginData.userType).select().eq('id', user.id)
-                        .then((data) => {
-                            console.log(data);
+                    supabase.from(loginData.userType).select().eq('id', data.user.id)
+                        .then((res) => {
+                            console.log(res);
 
                             if (error) {
                                 alert("please check your role ");
                             } else {
-
-                                localStorage.setItem("user", user);
+                                console.log(user);
+                                setUser(res.data[0])
+                                localStorage.setItem("user", JSON.stringify(res.data[0]));
                             }
 
                         })
@@ -122,6 +133,7 @@ const LoginPage = () => {
                         >
                             Login
                         </button>
+
                     </div>
                 </form>
             </div>

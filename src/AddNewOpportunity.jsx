@@ -1,11 +1,46 @@
-import React, { useState } from "react"
+import React, { useContext, useState } from "react"
 import { supabase } from './supaBaseClient';
+import { AuthContext } from "./contexts/authContext";
+import { useNavigate } from "react-router-dom";
 
 
-const AddNewOpportunity =()=>{
+const AddNewOpportunity = () => {
 
 
-    const [opportunity, setOpportunity] = useState({
+  const { user } = useContext(AuthContext);
+  // console.log(user);
+
+  const [opportunity, setOpportunity] = useState({
+    title: null,
+    description: null,
+    duration: null,
+    level: 'entry',
+    format: 'presentiel',
+    address: null,
+    schedule: 'temps plein',
+    startingDate: null,
+  });
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setOpportunity((prevOpportunity) => ({
+      ...prevOpportunity,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    // Handle form submission logic here
+
+    const opportunityResponse = await supabase.from("opportunity").insert(opportunity)
+
+    if (opportunityResponse.error) {
+      alert("please enter a valid informations")
+    }
+    else {
+      setOpportunity({
         title: null,
         description: null,
         duration: null,
@@ -14,44 +49,15 @@ const AddNewOpportunity =()=>{
         address: null,
         schedule: 'temps plein',
         startingDate: null,
-      });
-    
-      const handleChange = (event) => {
-        const { name, value } = event.target;
-    
-        setOpportunity((prevOpportunity) => ({
-          ...prevOpportunity,
-          [name]: value,
-        }));
-      };
-    
-      const handleSubmit = async(event) => {
-        event.preventDefault();
-        // Handle form submission logic here
+      })
+    }
 
-        const opportunityResponse= await supabase.from("opportunity").insert(opportunity)
-          
-        if(opportunityResponse.error){
-          alert("please enter a valid informations")
-        }
-        else{
-          setOpportunity({
-            title: null,
-            description: null,
-            duration: null,
-            level: 'entry',
-            format: 'presentiel',
-            address: null,
-            schedule: 'temps plein',
-            startingDate: null,
-          })
-        }
+    console.log('Form data submitted:', opportunity);
+  };
 
-        console.log('Form data submitted:', opportunity);
-      };
-    
-      return (
-        <div className="min-h-screen flex items-center justify-center   overflow-y-auto">
+  return (
+
+    <div className="min-h-screen flex items-center justify-center   overflow-y-auto">
       <div className="bg-white p-8  rounded-md shadow-lg max-w-md w-full">
         <h2 className="text-2xl font-bold mb-4 text-center ">Add New Opportunity</h2>
 
@@ -140,12 +146,12 @@ const AddNewOpportunity =()=>{
                   type="radio"
                   id="presentiel"
                   name="format"
-                  
+
                   value="presentiel"
                   onChange={handleChange}
 
                   className="cursor-pointer"
-                  
+
                 />
                 <label
                   htmlFor="presentiel"
@@ -250,13 +256,16 @@ const AddNewOpportunity =()=>{
             >
               Add
             </button>
+
           </div>
         </form>
       </div>
     </div>
-      );
+
+
+  );
 
 
 }
 
-export default AddNewOpportunity ;
+export default AddNewOpportunity;

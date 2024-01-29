@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
 
 import { supabase } from './supaBaseClient';
+import { AuthContext } from "./contexts/authContext";
 
 
 
 const Opportunity = ()=>{
 
+    const { user } = useContext(AuthContext);
+
+    console.log(user);
 
     const [candidature, setCandidature] = useState({
 
