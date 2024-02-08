@@ -1,0 +1,108 @@
+.navbar {
+    background-color: white;
+    width: 100%;
+    height: 67px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    top: 0;
+    z-index: 100; 
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Add your desired box shadow here */
+
+}
+.haute-droit{
+    margin-left: auto;
+}
+.rect{
+    background: #504C40;
+    width: 70px;
+    height: 18px;
+    margin-left:300px; 
+    margin-top:7px;
+    margin-bottom:2px; 
+    display: flex;
+}
+.haute-gauche h1{
+    color: #4D4842;
+    font-size: 15.5px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-align: right;
+    margin: 2px; 
+    /*display: flex;*/
+}
+.haute-gauche h2{
+    color: #818181;
+    font-size: 13.5px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-align: right;
+    margin-top: -10px;
+    margin: 2px;
+    /*display: flex;*/
+}
+#date{
+    color: #B9C255;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-align: center;
+    padding-top:0px;
+    margin-top: 0px;
+    margin-left:4px;
+    display: flex;
+}
+.haute-gauche{
+    float:left; 
+  }
+img{
+    height:50px;
+    margin-left:40px;
+    margin-top:15px;
+    margin-bottom:10px;
+    z-index: 99;
+}
+a{
+    text-decoration: none;
+    color:#005D14;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: normal;
+    display: flex;
+    justify-content: left;
+    margin-right: 35px;
+}
+.iconinscri{
+    color: #005D14;
+    cursor: pointer;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right: 125px;
+    top: 27px;
+}
+@media screen and (max-width : 600px) {
+    a,.iconinscri{
+        display: none;
+    }
+    .haute-gauche h1 ,.haute-gauche h2 {
+        font-size:13px;
+        margin-top: 5px;
+    }
+    .navbar{
+        width: 600px;
+    }
+    .haute-gauche{
+        font-size: 5px;
+    }
+    .rect{
+        margin-left: 220px;
+    }
+    img{
+        margin-left: 5px;
+    }
+}

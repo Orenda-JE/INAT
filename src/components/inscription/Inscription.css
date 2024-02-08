@@ -1,0 +1,39 @@
+.Inscription h1{
+    color: #CDD766;
+    font-size: 25px;
+    font-weight: 700;
+    text-align: center;
+    margin-top:20%;
+}
+.Inscription h2{
+    color: #CDD766;
+    font-size: 22px;
+    font-weight: 700;
+}
+.Inscription{
+    position: absolute;
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50%, -50%);
+}
+.form h1{
+    color: #D1D1D1;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin: 2px;
+    margin-top: 3%;
+}
+#pp{
+    color: #D1D1D1;
+    font-size: 15px;
+    font-style: normal;
+    line-height: normal;
+    margin: 2px;
+  
+}
+form{
+    text-align: center;
+    display: block;
+}

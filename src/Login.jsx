@@ -2,7 +2,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { supabase } from './supaBaseClient';
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "./contexts/authContext";
+import { AuthContext } from "./components/auth/authContext";
 
 
 

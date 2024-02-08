@@ -1,11 +1,11 @@
 import { useContext } from "react"
-import { AuthContext } from "../contexts/authContext"
+import { AuthContext } from "./auth/authContext"
 import { Navigate, Outlet, useNavigate } from "react-router-dom"
 
 
 export const UnactivatedAccountRouter = () => {
 
-    const navigate=useNavigate();
+   // const navigate=useNavigate();
     const {user}=useContext(AuthContext)
 
     if(user?.status) return <Outlet/>

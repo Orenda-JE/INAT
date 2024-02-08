@@ -1,0 +1,76 @@
+#titre {
+    color: #005D14;
+    position: relative;
+    left: 50%; /* Centre le texte horizontalement */
+    transform: translateX(-50%); /* Centre le texte horizontalement */
+    top: 10px;
+    font-family: Poppins;
+    width: 80%; /* Ajuste la largeur en pourcentage pour la réponse */
+    font-size: 36px;
+    text-align: center;
+  }
+  
+  #card1 {
+    width: 300%; /* Ajuste la largeur en pourcentage pour la réponse */
+    height: 750%; /* Ajuste la hauteur automatiquement en fonction du contenu */
+    margin: 70px auto; /* Centre la carte horizontalement avec une marge en haut */
+    border-radius: 14px;
+    box-shadow: 0 0 1em #D3D3D3;
+    position: relative;
+    top: 80px;
+  }
+  
+  #text1 {
+    font-family: Poppins; /* Correction de la propriété manquante */
+    color: black;
+    font-size: 22px;
+    position: relative; /* Changement de 'absolute' à 'relative' */
+    right: 1px; /* Ajuste la position en pourcentage pour la réponse */
+    top: 20px;
+    font-weight:bold;
+  }
+  
+  #btn {
+    background-color: #005D14;
+    border-radius: 10px;
+    width: 60%; /* Ajuste la largeur en pourcentage pour la réponse */
+    margin: 50px auto;
+    position: relative;
+    right: 110px; /* Centre le bouton horizontalement avec une marge en haut */
+  }
+
+img{
+  margin-right: 10px;
+}
+/* NomDuFichierCSS.css */
+.container {
+  text-align: center;
+  position: relative;
+top:70px;
+  border-radius: 5px;
+  padding: 5px;
+  height: 20vh;
+}
+
+
+.btn-custom {
+  
+  border: 2px solid green;
+  padding: 10px;  /* Ajustez le rembourrage selon vos besoins */
+  background-color: white;  /* Couleur de fond du bouton */
+  max-width: 300px;  /* Ajustez la largeur maximale selon vos besoins */
+  width: 100%;  /* Rend le bouton responsive en largeur */
+}
+
+.highlight {
+  font-weight: bold;   /* Mettre en gras */
+  color: #005D14; 
+  font-size: 20px;       /* Couleur verte */
+}
+  
+  #formulaire {
+    position: relative;
+    top: 40px;
+    left: 10%; 
+  }
+  

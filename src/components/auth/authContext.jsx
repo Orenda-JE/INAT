@@ -2,7 +2,7 @@
 
 // create context 
 
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 
 export const AuthContext = createContext({})
 

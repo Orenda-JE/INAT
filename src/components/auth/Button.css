@@ -1,0 +1,12 @@
+.butt{
+    width: 360px;
+    height: 50px;
+    cursor: pointer;
+    border: 1px solid #00330b;
+    border-radius: 10px;
+    background-color:  #00330b;
+    filter: drop-shadow(0px 0px 13.3px rgba(177, 177, 177, 0.52));
+    color: #ECECEC;
+    font-size: 20px;
+    margin: auto;
+}

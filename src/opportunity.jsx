@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 
 
 import { supabase } from './supaBaseClient';
-import { AuthContext } from "./contexts/authContext";
+import { AuthContext } from "./components/auth/authContext";
 
 
 
