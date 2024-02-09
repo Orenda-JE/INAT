@@ -101,15 +101,10 @@ function DisplayStage() {
           <Box flex={{ base: '3', sm: '3' }} pb={{ base: '10', sm: '20' }}>
             {result.length >= 0 && (
     <Stack direction={{ base: 'column', sm: 'row' }} display={"flex"} justifyContent={"space-between"}>
-    <Text size={{ base: 'xs', sm: 'sm' }} mb={{ base: '5', sm: '10' }} justifyContent={"space-between"} > 
+    <Text size={{ base: 'xs', sm: 'sm' }} mb={{ base: '5', sm: '10' }}>
       {result.length} offre de stage
-      <Link to="/add-opportunity">
-      <Text  color={"green"}  marginLeft={{ base: 'auto', sm: '0' }} > <Icon as={ MdOutlineAddBox } /> ajouter un stage</Text>
-    </Link>
     </Text>
-    <Link to="/add-opportunity">
-      <Text  color={"green"}  marginLeft={{ base: 'auto', sm: '0' }} > <Icon as={ MdOutlineAddBox } /> ajouter un stage</Text>
-    </Link>
+    
   </Stack>
   
   
@@ -117,7 +112,7 @@ function DisplayStage() {
             <Box
               //overflowY="auto" // Make the box scrollable if content exceeds its height
               //maxH="100vh"  // Set a maximum height for the second Box
-                >
+            >
               <Divider mb="20px" borderWidth="1px" borderColor={'black'}></Divider>
               {result.map((offer, index) => (
                 <Offre key={index} {...offer.props} />

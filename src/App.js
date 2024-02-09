@@ -22,6 +22,7 @@ import LoginPage from './Login';
 //3mor
 import Candidature from "./components/candudatures/Candidature";
 import DisplayStage from "./components/stage_page/DisplayStage";
+import DisplayStage2 from "./components/stage_page_student/DisplayStage2";
 import Gestion_compte from "./components/gestion-admin/gestion_compte"
  
 //maha
@@ -66,8 +67,9 @@ function App() {
             <Route path='/' element={<><NavBar /><div className="App"><Login /></div></>} />
             <Route path='/Inscription' element={ <> <div className="App"><Inscription/> </div> </> } />
             <Route path='/compte' element={ <Compte /> } />
-            <Route path='/DisplayStage' element={<><NavBar2 /><DisplayStage /> <Footer/> </>} />
+            <Route path='/DisplayStage0' element={<DisplayStage /> } />
             <Route path='/Gestion_compte' element={<><NavBar2 /> <Gestion_compte/> </>} />
+            <Route path='/DisplayStage2' element={<><NavBar2 /> <DisplayStage2/> </>} />
 
       
           </Routes>

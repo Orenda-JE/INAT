@@ -1,0 +1,50 @@
+*
+{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+.combined-card {
+    width: 100%;
+    max-width:90%; 
+    box-shadow: 0 18px 16px rgba(0, 0, 0, 0.2);
+    height: auto;
+    margin: auto; 
+    margin-bottom: 30px;
+
+}
+
+.combined-card {
+  display: flex;
+}
+.stage-container {
+  flex: 3;
+}
+/* 
+
+.box1 {
+  flex: 1;
+  position: sticky;
+  top: 0;
+  height: fit-content;
+  padding: 15px;
+  z-index: 1; 
+}
+*/
+.nav-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #005D14;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+  padding: 0 1rem;
+  color: white;
+  z-index: 1000; /* Set a high z-index to make sure it's on top of other content */
+
+}
