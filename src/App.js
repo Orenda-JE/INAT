@@ -22,8 +22,8 @@ import LoginPage from './Login';
 //3mor
 import Candidature from "./components/candudatures/Candidature";
 import DisplayStage from "./components/stage_page/DisplayStage";
-
-
+import Gestion_compte from "./components/gestion-admin/gestion_compte"
+ 
 //maha
 import NavBar from "./components/auth/NavBar";
 import NavBar2 from "./components/auth/NavBar2";
@@ -62,13 +62,12 @@ function App() {
             <Route path='/Opportunity' element={<><NavBar2 /><Opportunity /></>} />
             <Route path='/DisplayStage' element={<><NavBar2 /><DisplayStage /> <Footer/> </>} />
             <Route path='/NavBar' element={<NavBar />} />
-            <Route path='/Candidature' element={<><NavBar2 /><Candidature /></>} />
-            <Route path='/*' element={<><NavBar /><div className="App"><Login /></div></>} />
+            <Route path='/Candidature' element={<><NavBar2 /> <Candidature /></>} />
+            <Route path='/' element={<><NavBar /><div className="App"><Login /></div></>} />
             <Route path='/Inscription' element={ <> <div className="App"><Inscription/> </div> </> } />
             <Route path='/compte' element={ <Compte /> } />
             <Route path='/DisplayStage' element={<><NavBar2 /><DisplayStage /> <Footer/> </>} />
-
-            <Route path='/' element={<> <Footer/> </>} />
+            <Route path='/Gestion_compte' element={<><NavBar2 /> <Gestion_compte/> </>} />
 
       
           </Routes>

@@ -46,4 +46,5 @@
   padding: 0 1rem;
   color: white;
   z-index: 1000; /* Set a high z-index to make sure it's on top of other content */
+
 }

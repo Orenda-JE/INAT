@@ -1,11 +1,13 @@
 import  { useState, useEffect } from "react";
 import Navigation from "../navigation/Nav";
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider, StackItem } from "@chakra-ui/react";
 import Offre from "../offre_componenet/Offre";
 import { getData } from "../lesoffres_DB/getdata";
 import Sidebar from "../sidebar/Sidebar";
 import "./stage.css";
-import { Card, CardBody, Heading, Box, Stack, Text, Divider } from '@chakra-ui/react';
+import { Card, CardBody, Heading, Box, Stack, Text, Divider  ,Icon} from '@chakra-ui/react';
+import { MdOutlineAddBox } from "react-icons/md";
+import { Link } from 'react-router-dom'; // Import Link
 
 
 function DisplayStage() {
@@ -99,11 +101,21 @@ function DisplayStage() {
 
           {/* Second Card Content */}
           <Box flex={{ base: '3', sm: '3' }} pb={{ base: '10', sm: '20' }}>
-            {result.length >= 0 && (
-              <Text size={{ base: 'xs', sm: 'sm' }} mb={{ base: '5', sm: '10' }}>
-                {result.length} internships
-              </Text>
-            )}
+  {result.length >= 0 && (
+    <Stack direction={{ base: 'column', sm: 'row' }} display={"flex"}>
+    <Text size={{ base: 'xs', sm: 'sm' }} mb={{ base: '5', sm: '10' }}>
+      {result.length} offre de stage
+    </Text>
+    <Link to="/add-opportunity">
+      <Text pl={"90vh"} color={"green"}  marginLeft={{ base: 'auto', sm: '0' }}> <Icon as={ MdOutlineAddBox } /> ajouter un stage</Text>
+    </Link>
+  </Stack>
+  
+  
+  )}
+
+
+            
             <Box
               //overflowY="auto" // Make the box scrollable if content exceeds its height
               //maxH="100vh"  // Set a maximum height for the second Box

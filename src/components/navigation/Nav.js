@@ -21,7 +21,7 @@ function Nav({ query, handleChange, handleInputChange }) {
   }, []);
 
   return (
-    <header className="nav-container">
+    <header id="nav-container">
       <Input
         bg='white'
         color='black'
@@ -29,7 +29,7 @@ function Nav({ query, handleChange, handleInputChange }) {
         size='lg'
         className='search-input'
         htmlSize={70}
-        width={{ base: '100%', sm: 'auto' }}
+        width={{ base: '100%', sm: '70vh' }}
         borderRadius={15}
         onChange={handleInputChange}
         value={query}
@@ -39,6 +39,7 @@ function Nav({ query, handleChange, handleInputChange }) {
         placeholder='Select Duree'
         color='black'
         bg='white'
+        mr={50}
         className='select-place'
         width={{ base: '100%', sm: '50vh' }}
         borderRadius={15}

@@ -1,4 +1,4 @@
-import { Card, CardBody, Box, Stack, Text, Divider, Button, Flex } from '@chakra-ui/react';
+import { Card, CardBody, Box, Stack, Text, Divider, Button, Flex, Select, Input } from '@chakra-ui/react';
 import Condudature_component from './Condidature_component';
 import { useEffect, useState } from 'react';
 import { getCandidature } from '../lesoffres_DB/getCandidature';
@@ -22,28 +22,33 @@ function Candidature() {
   }, []);
 
   return (
-    <Flex direction="column" alignItems="flex-end">
-      <Flex>
-      <Link to="/add-opportunity">
-          <Button mt={20} mr={2} borderRadius={15} colorScheme="teal">ajouter un stage</Button>
+    <Flex direction="column" alignItems="center">
+      <Flex flexWrap="wrap" justifyContent="center" mt={100} mb={2}>
+        <Link to="/add-opportunity">
+          <Button mt={2} mr={2} borderRadius={15} colorScheme="teal">Ajouter un stage</Button>
         </Link>
         <Link to="/DisplayStage">
-          <Button mt={20} mr={10} borderRadius={15} colorScheme="teal">les Stages</Button>
+          <Button mt={2} borderRadius={15} colorScheme="teal" w={"100%"} justifyContent={"center"}>Les Stages</Button>
         </Link>
-       
-
       </Flex>
 
-      <Card className="combined-card" boxShadow="0 4px 8px rgba(0, 0, 0, 0.5)" mt={4}>
+      <Card className="combined-card" boxShadow="0 4px 8px rgba(0, 0, 0, 0.5)" mt={10} width={{ base: '100%', sm: '100%', md: '100%', lg: '100%' }}>
         <CardBody margin={10}>
-          <Stack direction={{ base: 'column', sm: 'column' }} spacing={{ base: '10', sm: '15' }}>
+          <Stack direction="column" spacing={{ base: '10', sm: '15' }}>
             {/* First Card Content */}
-            <div className="box1">
-              <Box flex={{ base: '1', sm: '1' }} mb={{ base: '5', sm: '0' }} >
-                <Text pt={{ base: '5', sm: '10' }} fontSize="sm" > {data.length} candidature</Text>
-              </Box>
-            </div>
-            <Divider mb="10px" borderWidth="1px" borderColor={'black'}></Divider>
+            <Box>
+            <Flex alignItems="center">
+              <Select color="green" placeholder='Select option' w={"12%"} textAlign="left" borderRadius={10} size="sm"> 
+                <option value="Etudiant">Etudiant</option>
+                <option value="entreprise">Entreprise</option>
+              </Select>        
+              <Input placeholder="Nom et Prénom" borderRadius={10} size="sm" textAlign="left"  w={"15%"} mr={2} />      
+
+              <Text fontSize="sm" pl={850} mb={{ base: '5', sm: '0' }}>{data.length} candidatures</Text>
+            </Flex>
+     
+            </Box>
+            <Divider mb="10px" borderWidth="1px" borderColor={'black'} />
 
             {/* Second Card Content */}
             <Box>
