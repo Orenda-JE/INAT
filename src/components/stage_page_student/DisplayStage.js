@@ -57,9 +57,10 @@ function DisplayStage() {
 
       // Include in the result if it matches both conditions
       return matchesSearchQuery && matchesSelectedDomain;
-    }).map(({ img, nom, description, poste, duree, type_du_travaille, lieu, domain, preferences_a_distance }) => (
+    }).map(({ id, img, nom, description, poste, duree, type_du_travaille, lieu, domain, preferences_a_distance }) => (
       <Offre
         key={Math.random()}
+        id={id}
         img={img}
         nom={nom}
         description={description}
@@ -74,6 +75,7 @@ function DisplayStage() {
   }
 
   const result = filteredData(data, selectedDomain, query);
+  console.log("fetched data offre " ,result )
 
   return (
     <>
@@ -115,7 +117,7 @@ function DisplayStage() {
             >
               <Divider mb="20px" borderWidth="1px" borderColor={'black'}></Divider>
               {result.map((offer, index) => (
-                <Offre key={index} {...offer.props} />
+                 <Offre key={index} {...offer.props} /> 
               ))}
             </Box>
           </Box>

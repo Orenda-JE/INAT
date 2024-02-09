@@ -1,6 +1,13 @@
-import { Card, CardBody, Heading, Stack, Text, CardFooter, Image, Box } from '@chakra-ui/react';
+import { Card, CardBody, Heading, Stack, Text, CardFooter, Image, Box, Button } from '@chakra-ui/react';
+import { Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom'; // Import Link
 
- function Offre({img, nom, description, poste, duree, type_du_travaille}) {
+
+ function Offre({id,img, nom, description, poste, duree, type_du_travaille}) {
+  function postuler()
+{
+  
+}
   return (
     <div>
       <div className="container-ofcontainer" >
@@ -47,6 +54,10 @@ import { Card, CardBody, Heading, Stack, Text, CardFooter, Image, Box } from '@c
                       
                     <Text py='2' color={'grey'}>
                         date
+                        <Link to={`/add-opportunity/${id}`}>
+                           postuler 
+                           </Link>
+                        
                       </Text>
                     </CardFooter>
                   </Stack>

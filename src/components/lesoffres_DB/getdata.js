@@ -5,12 +5,13 @@ const getData = async () => {
   try {
     const { data: fetchedData, error } = await supabase
       .from('stages')
-      .select('img, nom, description, poste, duree, type_du_travaille, lieu, domain, preferences_a_distance');
+      .select('id,img, nom, description, poste, duree, type_du_travaille, lieu, domain, preferences_a_distance');
 
     if (error) {
       console.error('Error fetching data:', error.message);
       return [
         {
+          id:"",
           img: "",
           nom: "",
           description: "",
@@ -28,6 +29,7 @@ const getData = async () => {
     // Return the fetched data array directly
     return fetchedData || [
       {
+        id:"",
         img: "",
         nom: "",
         description: "",
@@ -43,6 +45,7 @@ const getData = async () => {
     console.error('Error:', error.message);
     return [
       {
+        id:"",
         img: "",
         nom: "",
         description: "",

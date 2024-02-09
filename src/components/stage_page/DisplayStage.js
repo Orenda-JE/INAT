@@ -120,7 +120,7 @@ function DisplayStage() {
                 >
               <Divider mb="20px" borderWidth="1px" borderColor={'black'}></Divider>
               {result.map((offer, index) => (
-                <Offre key={index} {...offer.props} />
+                <Offre key={index} {...offer.props} /> 
               ))}
             </Box>
           </Box>
