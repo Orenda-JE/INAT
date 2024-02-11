@@ -38,8 +38,6 @@ import Footer from "./components/inscription/Footer"
 
 
 //oumaima
-import Compte from "./components/compte/Home"
-import "../src/components/compte/modife/Home.css";
 import { UnauthenticatedRouter } from './components/middelwares/UnauthenticatedUserRouter';
 import { UnactivatedAccountRouter } from './components/middelwares/UnactivatedUserRouter';
 import { OnlyEntrepriseRouter } from './components/middelwares/OnlyEntrepriseRouters';

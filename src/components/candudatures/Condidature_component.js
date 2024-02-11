@@ -28,18 +28,21 @@ function Condudature_component() {
   const {user}=useContext(AuthContext)
 
 
+  const fetchData = async () => {
+    try {
+      const fetchedData = await getCandidature(user?.id);
+      setData(fetchedData);
+      console.log('Fetched Data: ', fetchedData);
+    } catch (error) {
+      console.error('Error fetching data:', error.message);
+    }
+  };
+
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const fetchedData = await getCandidature(user?.id);
-        setData(fetchedData);
-        console.log('Fetched Data: ', fetchedData);
-      } catch (error) {
-        console.error('Error fetching data:', error.message);
-      }
-    };
+    
 
     fetchData();
+    
   }, []);
 
   const handleRefuse = async (candidatureId) => {
@@ -53,6 +56,7 @@ function Condudature_component() {
     }
   };
 
+if(!data || data.length==0)return <h1>no candidature</h1>
   
   return (
     <TableContainer>
