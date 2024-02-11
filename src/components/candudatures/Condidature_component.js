@@ -16,18 +16,22 @@ import {
 } from '@chakra-ui/react';
 import { IoMdDownload } from "react-icons/io";
 import { FaCheck, FaTimes } from "react-icons/fa";
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { getCandidature } from '../lesoffres_DB/getCandidature';
 import refuser from './refuser';
 import { sendSignupEmail } from '../mail/sendEmail'; 
+import { AuthContext } from '../auth/authContext';
 
 function Condudature_component() {
   const [data, setData] = useState([]);
 
+  const {user}=useContext(AuthContext)
+
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const fetchedData = await getCandidature();
+        const fetchedData = await getCandidature(user?.id);
         setData(fetchedData);
         console.log('Fetched Data: ', fetchedData);
       } catch (error) {
@@ -49,6 +53,7 @@ function Condudature_component() {
     }
   };
 
+  
   return (
     <TableContainer>
       <Table variant='simple'>

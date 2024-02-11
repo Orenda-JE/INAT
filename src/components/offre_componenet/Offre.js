@@ -4,10 +4,7 @@ import { Link } from 'react-router-dom'; // Import Link
 
 
  function Offre({id,img, nom, description, poste, duree, type_du_travaille}) {
-  function postuler()
-{
-  
-}
+ 
   return (
     <div>
       <div className="container-ofcontainer" >
@@ -54,9 +51,9 @@ import { Link } from 'react-router-dom'; // Import Link
                       
                     <Text py='2' color={'grey'}>
                         date
-                        <Link to={`/add-opportunity/${id}`}>
+                        <Link to={`/opportunity/${id}`}>
                            postuler 
-                           </Link>
+                        </Link>
                         
                       </Text>
                     </CardFooter>

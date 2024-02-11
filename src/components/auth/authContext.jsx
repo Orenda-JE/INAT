@@ -2,7 +2,7 @@
 
 // create context 
 
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export const AuthContext = createContext({})
 
@@ -19,10 +19,13 @@ export const AuthContextProvider = ({ children }) => {
     // state
     const [user, setUser] = useState();
 
+    // TTL time to live
+
+    const [TTL,setTTL]=useState();
  
 
     return (
-        <AuthContext.Provider value={{ user, setUser }}>
+        <AuthContext.Provider value={{ user, setUser ,TTL,setTTL}}>
             {children}
         </AuthContext.Provider>
     );

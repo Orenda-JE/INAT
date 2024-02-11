@@ -8,7 +8,7 @@ import { AuthContext } from "./components/auth/authContext";
 
 const LoginPage = () => {
 
-    const { user, setUser } = useContext(AuthContext);
+    const { user, setUser,setTTL } = useContext(AuthContext);
     const navigate = useNavigate()
 
     var error;
@@ -52,16 +52,20 @@ const LoginPage = () => {
             else
                 if (data.user) {
                     session = data.session;
+
+                    console.log(data);
+                    
                     supabase.from(loginData.userType).select().eq('id', data.user.id)
                         .then((res) => {
                             console.log(res);
-
                             if (error) {
                                 alert("please check your role ");
                             } else {
                                 console.log(user);
                                 setUser(res.data[0])
                                 localStorage.setItem("user", JSON.stringify(res.data[0]));
+                                setTTL(Date.now() + 15 * 60 * 1000);
+                                localStorage.setItem("TTL", Date.now() + 15 * 60 * 1000);
                             }
 
                         })
@@ -122,7 +126,7 @@ const LoginPage = () => {
                         >
                             <option value="admin">Admin</option>
                             <option value="student">Student</option>
-                            <option value="enterprise">Enterprise</option>
+                            <option value="entreprise">Enterprise</option>
                         </select>
                     </div>
 

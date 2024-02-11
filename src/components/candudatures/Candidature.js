@@ -1,16 +1,20 @@
 import { Card, CardBody, Box, Stack, Text, Divider, Button, Flex, Select, Input } from '@chakra-ui/react';
 import Condudature_component from './Condidature_component';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { getCandidature } from '../lesoffres_DB/getCandidature';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../auth/authContext';
 
 function Candidature() {
   const [data, setData] = useState([]);
 
+
+  const {user}=useContext(AuthContext)
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const fetchedData = await getCandidature();
+        const fetchedData = await getCandidature(user?.id);
         setData(fetchedData);
         console.log('Fetched Data: ', data);
       } catch (error) {

@@ -57,8 +57,9 @@ function DisplayStage() {
 
       // Include in the result if it matches both conditions
       return matchesSearchQuery && matchesSelectedDomain;
-    }).map(({ img, nom, description, poste, duree, type_du_travaille, lieu, domain, preferences_a_distance }) => (
+    }).map(({ id,img, nom, description, poste, duree, type_du_travaille, lieu, domain, preferences_a_distance }) => (
       <Offre
+        id={id}
         key={Math.random()}
         img={img}
         nom={nom}

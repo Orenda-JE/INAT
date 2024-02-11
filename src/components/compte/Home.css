@@ -11,8 +11,8 @@
   }
   
   #card1 {
-    width: 300%; /* Ajuste la largeur en pourcentage pour la réponse */
-    height: 750%; /* Ajuste la hauteur automatiquement en fonction du contenu */
+    width: 80%; /* Ajuste la largeur en pourcentage pour la réponse */
+    height: 50%; /* Ajuste la hauteur automatiquement en fonction du contenu */
     margin: 70px auto; /* Centre la carte horizontalement avec une marge en haut */
     border-radius: 14px;
     box-shadow: 0 0 1em #D3D3D3;
@@ -52,10 +52,16 @@ top:70px;
   height: 20vh;
 }
 
-
+#img2{
+  height: 30px;
+  width: 34px;
+  position: relative;
+  bottom: 10px;
+}
 .btn-custom {
   
-  border: 2px solid green;
+  position: relative;
+  bottom: 40px;
   padding: 10px;  /* Ajustez le rembourrage selon vos besoins */
   background-color: white;  /* Couleur de fond du bouton */
   max-width: 300px;  /* Ajustez la largeur maximale selon vos besoins */
@@ -65,7 +71,10 @@ top:70px;
 .highlight {
   font-weight: bold;   /* Mettre en gras */
   color: #005D14; 
-  font-size: 20px;       /* Couleur verte */
+  font-size: 20px;  
+  position: relative;
+  bottom: 50px;   
+  left:5px;  /* Couleur verte */
 }
   
   #formulaire {

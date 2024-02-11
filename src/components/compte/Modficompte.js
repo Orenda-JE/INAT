@@ -1,7 +1,10 @@
 import React from 'react';
-import { Button, Card, Col, Form, Row } from 'react-bootstrap';
-
-//import "./modife/Home.css";
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
+import "./Home.css";
 import logo from './img.png';
 const Modficompte= ()=> {
   return (
@@ -21,12 +24,10 @@ const Modficompte= ()=> {
                   <input
                     type="text"
                     className="form-control"
-                   
-                    
                   />
-                 
                 </Col>
                 <Col sm={2}>
+             
     <Button variant="outline-success"  >
       Editer
     </Button>
@@ -93,7 +94,7 @@ const Modficompte= ()=> {
             </form>  
             <div className="container">
       <button className="btn btn-custom" id="btn2">
-        <img src={logo} width="34px" height="30px" alt="logo"  /> 
+        <img src={logo} id='img2' alt="logo"  /> 
         <span className="highlight">Déconnecter</span>
       </button>
     </div>

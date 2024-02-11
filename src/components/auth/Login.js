@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import supabase from '../supabase';
 import InputField from './InputField';
 import Button from './Button';
@@ -6,69 +6,73 @@ import './Login.css';
 import { FaUser } from 'react-icons/fa';
 import { RiLock2Fill } from 'react-icons/ri';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { AuthContext } from './authContext';
 
 const Login = () => {
-  const navigate = useNavigate(); // Initialize useNavigate hook
-  const [FormData, setFormData] = useState({ email: '', password: '', userType: '' }); // Add userType to FormData
+  const { user, setUser, setTTL } = useContext(AuthContext);
+  const navigate = useNavigate()
+
+  var error;
+  var session
+
+  const [loginData, setLoginData] = useState({
+    email: "",
+    password: "",
+    userType: "student",
+  });
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setFormData((prevFormData) => ({
-      ...prevFormData,
+
+    setLoginData((prevLoginData) => ({
+      ...prevLoginData,
       [name]: value,
     }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log(FormData);
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email: FormData.email,
-      password: FormData.password,
-    });
-    if (error) {
-      alert('cant login ' + error.message);
-    } else if (data.user) {
-      const user = data.user;
-      console.log("logged in person", user);
-      console.log("id's", user.id);
-      console.log("le statuts", FormData.email);
-
-      // Check the userType to determine the table to query(using the select)
-      let tableName;
-      if (FormData.userType === "admin") {
-        tableName = "admin";
-      } else if (FormData.userType === "student") {
-        tableName = "student";
-      } else {
-        tableName = "entreprise";
-      }
-
-      // Perform a query to check if the user's ID exists in the corresponding table(after making sure it exist in the table users)
-      const { data: userData, error: userError } = await supabase
-        .from(tableName)
-        .select()
-        .eq('id', user.id)
-        .single();
-
-      if (userError) {
-        alert("Error checking user: " + userError.message);
-      } else if (userData) {
-        // User exists in the table
-        console.log("User exists in table: ", tableName);
-        // Redirect to the corresponding component based on userType(mta3 select)
-        if (FormData.userType === "admin") {
-          navigate('/Candidature');
-        } else if (FormData.userType === "student") {
-          navigate('/DisplayStage');
-        } else {
-          // Handle redirection for other user types
-        }
-      } else {
-        // User does not exist in the table
-        alert("User does not exist in table: " + tableName);
-      }
+  useEffect(() => {
+    if (user) {
+      localStorage.setItem("user", JSON.stringify(user))
+      navigate("/DisplayStage")
     }
+  }, [user])
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+
+    // Use Supabase auth.signIn to log in the user
+    await supabase.auth.signInWithPassword({
+      email: loginData.email,
+      password: loginData.password,
+
+    }).then(({ data, error }) => {
+      if (error) {
+        alert('cant login ' + error.message);
+      }
+      else
+        if (data.user) {
+          session = data.session;
+          supabase.from(loginData.userType).select().eq('id', data.user.id)
+            .then((res) => {
+              if (res.data.length != 1) {
+                alert("please check your role or your credential");
+                localStorage.clear()
+              } else {
+                console.log(user);
+                setUser(res.data[0])
+                localStorage.setItem("user", JSON.stringify(res.data[0]));
+                setTTL(Date.now() + 15 * 60 * 1000);
+                localStorage.setItem("TTL", Date.now() + 15 * 60 * 1000);
+              }
+
+            })
+
+        }
+
+    });
+
+
   };
 
   return (
@@ -110,10 +114,9 @@ const Login = () => {
             onChange={handleChange}
             name="userType" // Add name attribute for FormData handling
           >
-            <option value="">choisir votre status</option>
             <option value="admin">Admin</option>
-            <option value="student">Student</option>
-            <option value="enterprise">Enterprise</option>
+            <option value="student" selected>Student</option>
+            <option value="entreprise">Enterprise</option>
           </select>
         </div>
         <Button text="Se connecter" id="butt" />

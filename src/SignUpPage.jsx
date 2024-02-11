@@ -9,12 +9,12 @@ import { useNavigate } from 'react-router-dom'
 const SignUpPage = () => {
 
 
-  const navigate =useNavigate();
+  const navigate = useNavigate();
 
   const [userData, setUserData] = useState({
     email: "",
     password: "",
-    userType:"student", // Default user type
+    userType: "student", // Default user type
   });
 
   const handleChange = (event) => {
@@ -26,40 +26,43 @@ const SignUpPage = () => {
     }));
   };
 
-  const handleSubmit = async(event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
 
-if(window.confirm("are you sure u want to sign up as "+userData.userType)){
+    if (window.confirm("are you sure u want to sign up as " + userData.userType)) {
 
 
-  const {data,error}= await supabase.auth.signUp(userData);
+      const { data, error } = await supabase.auth.signUp(userData);
 
-    console.log(data);
+      console.log(data);
 
-    if(error){
+      if (error) {
 
-      alert("error "+error.message)
-      navigate("/login")
+        alert("error " + error.message)
+        navigate("/login")
 
-    }else{
+      } else {
 
-       supabase.from(userData.userType).insert({"email":userData.email,"userType":userData.userType,"id":data.user.id}).then((candidatureResponse)=>{
+        supabase.from(userData.userType).insert({ "email": userData.email, "userType": userData.userType, "id": data.user.id }).then((response) => {
 
-        console.log(candidatureResponse);
+          if (response.error) {
+            supabase.auth.admin.deleteUser(data.user.id);
+          }
+          else {
+            alert("please verify  your mail !")
 
-        alert("please verify  your mail !") 
+            navigate('/login');
+          }
 
-        navigate('/login');
 
-       })
 
-    }
-}else {
+        })
 
-}
+      }
+    } 
 
-    
+
 
   };
 
@@ -112,7 +115,7 @@ if(window.confirm("are you sure u want to sign up as "+userData.userType)){
             >
               <option value="admin">Admin</option>
               <option value="student">Student</option>
-              <option value="company">Enterprise</option>
+              <option value="entreprise">Enterprise</option>
             </select>
           </div>
 

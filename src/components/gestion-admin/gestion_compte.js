@@ -1,8 +1,37 @@
 import { Card, CardBody, Box, Stack, Text, Divider, Button, Flex, Input, Select } from '@chakra-ui/react';
 import Gestion_component from './gestion_component';
 import { Link } from 'react-router-dom';
+import { supabase } from '../../supaBaseClient';
+import { useEffect, useState } from 'react';
 
 function GestionCompte() {
+
+  const [selectedStatus, setSelectedStatus] = useState("student"); // State for selected status
+  const [users, setUsers] = useState([]); // State for fetched users
+
+  // Function to fetch users based on selected status
+  const fetchUsers = async () => {
+    try {
+      const { data, error } = await supabase
+        .from(selectedStatus)
+        .select('*')
+        .eq('status', "false");
+      if (error) {
+        throw error;
+      }
+      setUsers(data); // Update users state with fetched data
+    } catch (error) {
+      console.error("Error fetching users:", error.message);
+    }
+  };
+
+  useEffect(() => {
+    fetchUsers(); // Fetch users when component mounts or selected status changes
+  }, [selectedStatus]);
+
+
+
+
   return (
     <Flex direction="column" alignItems="center">
       <Flex flexWrap="wrap" justifyContent="center" mt={100} mb={2}>
@@ -16,8 +45,15 @@ function GestionCompte() {
           <Stack direction="column" spacing={{ base: '10', sm: '15' }}>
             {/* First Card Content */}
             <Flex alignItems="center">
-              <Select color="green" placeholder='Select option' w={"12%"} textAlign="left" borderRadius={10} size="sm"> 
-                <option value="Etudiant">Etudiant</option>
+              <Select color="green"
+                placeholder='Select option'
+                w={"12%"}
+                textAlign="left"
+                borderRadius={10}
+                size="sm"
+                value={selectedStatus}
+                onChange={(e) => setSelectedStatus(e.target.value)}> 
+                <option value="student" selected>Etudiant</option>
                 <option value="entreprise">Entreprise</option>
               </Select>        
               <Input placeholder="Nom et Prénom" borderRadius={10} size="sm" textAlign="left"  w={"15%"} mr={2} />      
@@ -27,7 +63,7 @@ function GestionCompte() {
             <Divider mb="10px" borderWidth="1px" borderColor="black" />
 
             <Box>
-              <Gestion_component />
+              <Gestion_component users={users}/>
             </Box>
           </Stack>
         </CardBody>

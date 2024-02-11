@@ -1,99 +1,109 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 
 import { supabase } from './supaBaseClient';
+import { useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "./components/auth/authContext";
 
 
 
-const Opportunity = ()=>{
+const Opportunity = () => {
 
-    const { user } = useContext(AuthContext);
+  const navigate=useNavigate()
+  const { user } = useContext(AuthContext);
 
-    console.log(user);
+  const {stageId}=useParams()
 
-    const [candidature, setCandidature] = useState({
+  console.log(user);
 
-        studentId:1,
-        opportunityId:3,
-        name: '',
+  const [candidature, setCandidature] = useState({
+
+    studentId:user?.id,
+    opportunityId: stageId,
+    nom: '',
+    cv: null,
+    niveau: 'entry',
+    email: '',
+  });
+
+
+  const handleChange = (event) => {
+    const { name, value, files } = event.target;
+
+    // If the field is a file input, set cv to the selected file
+    const fieldValue = name === 'cv' ? files[0] : value;
+
+    setCandidature((prevCandidature) => ({
+      ...prevCandidature,
+      [name]: fieldValue,
+    }));
+  };
+
+
+
+
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    console.log("*****************"+candidature);
+
+    // Send the data to the database or perform other actions here
+    const filePath = candidature.studentId + "/" + candidature.cv.name + Date.now();
+
+    const { data, error } = await supabase.storage.from("cv").upload(filePath, candidature.cv)
+
+    if (data) {
+      candidature.cv = data.path
+      const candidatureResponse = await supabase.from("candidature").insert(candidature)
+      console.log("from supabase response : ", candidatureResponse);
+
+      if (candidatureResponse.status == 201) {
+        // redirect the user to the list of candidature
+
+        navigate("/DisplayStage")
+
+      } else {
+        alert("please check your credential")
+      }
+
+      // Clear the form fields after submission
+
+      setCandidature({
+        nom: '',
         cv: null,
-        level: 'entry',
+        niveau: 'entry',
         email: '',
       });
-    
-    
-      const handleChange = (event) => {
-        const { name, value, files } = event.target;
-    
-        // If the field is a file input, set cv to the selected file
-        const fieldValue = name === 'cv' ? files[0] : value;
-    
-        setCandidature((prevCandidature) => ({
-          ...prevCandidature,
-          [name]: fieldValue,
-        }));
-      };
-    
-      const handleSubmit = async (event) => {
-        event.preventDefault();
-    
-        // Send the data to the database or perform other actions here
-        const filePath=candidature.studentId+"/"+candidature.cv.name+Date.now();
-        console.log("from file path",filePath);
-
-        console.log("*****************************")
-        console.log(candidature)
-
-        const {data,error}= await supabase.storage.from("cv").upload(filePath,candidature.cv)
-        if(data){
-          candidature.cv=data.path        
-          const candidatureResponse= await supabase.from("candidature").insert(candidature)
-          console.log("from supabase response : ",candidatureResponse);
-
-          if(candidatureResponse.status==201){
-            // redirect the user to the list of candidature
-          }else{
-            alert("please check your credential")
-          }
-
-        // Clear the form fields after submission
-
-          setCandidature({
-            name: '',
-            cv: null,
-            level: 'entry',
-            email: '',
-          });
-        }
-        else {
-          alert('please uplaod a valid cv')
-          candidature.cv=null;
-        }
-        
-
-    
-        
-      };
-    
+    }
+    else {
+      alert('please uplaod a valid cv')
+      candidature.cv = null;
+    }
 
 
 
-    return (
-<div className="h-screen w-full flex items-center justify-center shadow-xl overflow-y-auto">
-  <div className="bg-white p-8 rounded-md shadow-2xl max-w-xl w-full max-h-screen">
+
+  };
+
+
+
+
+  return (
+    <div className="h-screen w-full flex items-center justify-center shadow-xl overflow-y-auto">
+      <div className="bg-white p-8 rounded-md shadow-2xl max-w-xl w-full max-h-screen">
         <h2 className="text-3xl font-bold mb-6 text-center">Opportunity Form</h2>
 
         <form onSubmit={handleSubmit} method="POST">
           <div className="mb-6">
             <label htmlFor="name" className="block text-sm font-medium text-gray-600">
-              Name
+              nom
             </label>
             <input
               type="text"
               id="name"
-              name="name"
-              value={candidature.name}
+              name="nom"
+              value={candidature.nom}
               onChange={handleChange}
               className="mt-1 p-3 w-full border rounded-md text-sm focus:outline-none focus:ring focus:border-blue-300"
               placeholder="John Doe"
@@ -115,12 +125,12 @@ const Opportunity = ()=>{
 
           <div className="mb-6">
             <label htmlFor="level" className="block text-sm font-medium text-gray-600">
-              Level
+              niveau
             </label>
             <select
               id="level"
-              name="level"
-              value={candidature.level}
+              name="niveau"
+              value={candidature.niveau}
               onChange={handleChange}
               className="mt-1 p-3 w-full border rounded-md text-sm focus:outline-none focus:ring focus:border-blue-300"
             >
@@ -150,13 +160,13 @@ const Opportunity = ()=>{
               type="submit"
               className="bg-green-800 text-white text-sm py-3 px-6 rounded-md hover:bg-green-600 focus:outline-none focus:ring focus:border-green-300"
             >
-              Submit
+              soumettre
             </button>
           </div>
         </form>
       </div>
     </div>
-    )
+  )
 }
 
 export default Opportunity;
