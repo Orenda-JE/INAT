@@ -36,7 +36,7 @@ function Nav({ query, handleChange, handleInputChange }) {
       />
 
       <Select
-        placeholder='Select Duree'
+        placeholder='Select emplacement'
         color='black'
         bg='white'
         mr={50}

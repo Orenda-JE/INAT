@@ -104,9 +104,7 @@ function DisplayStage() {
     <Stack direction={{ base: 'column', sm: 'row' }} display={"flex"} justifyContent={"space-between"}>
     <Text size={{ base: 'xs', sm: 'sm' }} mb={{ base: '5', sm: '10' }} justifyContent={"space-between"} > 
       {result.length} offre de stage
-      <Link to="/add-opportunity">
-      <Text  color={"green"}  marginLeft={{ base: 'auto', sm: '0' }} > <Icon as={ MdOutlineAddBox } /> ajouter un stage</Text>
-    </Link>
+      
     </Text>
     <Link to="/add-opportunity">
       <Text  color={"green"}  marginLeft={{ base: 'auto', sm: '0' }} > <Icon as={ MdOutlineAddBox } /> ajouter un stage</Text>

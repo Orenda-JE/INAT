@@ -53,7 +53,8 @@ function Condudature_component() {
     }
   };
 
-  
+  if(!data ) return <h1>no candidature</h1>
+
   return (
     <TableContainer>
       <Table variant='simple'>

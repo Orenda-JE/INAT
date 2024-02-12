@@ -87,7 +87,6 @@ a{
 }
 @media screen and (max-width : 600px) {
     a,.iconinscri{
-        display: none;
     }
     .haute-gauche h1 ,.haute-gauche h2 {
         font-size:13px;

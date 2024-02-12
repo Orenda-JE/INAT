@@ -92,18 +92,8 @@ import { getdatafiltre } from "../lesoffres_DB/getdatafiltre";
     </h2>
     <AccordionPanel pb={4}>
     <Stack spacing={5} direction='column'>
-    {data.map((offer, index) => {
-/*
-  if (offer.preferences_a_distance) {
-    return (
-      <Radio key={index} onChange={handleChange} type="something" value={offer.preferences_a_distance}>
-        {offer.preferences_a_distance}
-      </Radio>
-    );
-  }
-*/
-  return null;
-})}
+ 
+
   <Radio onChange={handleChange} niveau_education="1 an"   value="1 an" > 1 an </Radio>
   <Radio onChange={handleChange} niveau_education="2 ans" value="2 ans" > 2 ans </Radio>
   <Radio onChange={handleChange} niveau_education="licence" value="licence" > licence</Radio>
