@@ -32,18 +32,17 @@ const Login = () => {
 
   useEffect(() => {
     if (user) {
-      localStorage.setItem("user", JSON.stringify(user))
-      if (FormData.userType=="student") {
-        navigate("/DisplayStage2")
-      }
-      else if (FormData.userType=="entreprise") {
-        navigate("/DisplayStage")
-      }
-      else if (FormData.userType=="admin") {
-        navigate("/Gestion_compte")
+      localStorage.setItem("user", JSON.stringify(user));
+      if (user.userType === "student") {
+        navigate("/DisplayStage2");
+      } else if (user.userType === "entreprise") {
+        navigate("/DisplayStage");
+      } else if (user.userType === "admin") {
+        navigate("/Gestion_compte");
       }
     }
-  }, [user])
+  }, [user, navigate]);
+  
 
   const handleSubmit = async (event) => {
     event.preventDefault();

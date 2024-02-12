@@ -5,10 +5,9 @@ import Offre from "../offre_componenet/Offre";
 import { getData } from "../lesoffres_DB/getdata";
 import Sidebar from "../sidebar/Sidebar";
 import "./stage.css";
-import { Card, CardBody, Heading, Box, Stack, Text, Divider  ,Icon} from '@chakra-ui/react';
+import { Card, CardBody, Heading, Box, Stack, Text, Divider  ,Icon ,Button} from '@chakra-ui/react';
 import { MdOutlineAddBox } from "react-icons/md";
 import { Link } from 'react-router-dom'; // Import Link
-import { Button } from "react-bootstrap";
 
 
 function DisplayStage() {
@@ -83,20 +82,25 @@ function DisplayStage() {
       <ChakraProvider>
 
       <Navigation result={result} query={query} handleChange={handleChange} handleInputChange={handleInputChange} />
-<Flex flexWrap="wrap" justifyContent="center" mt={100} mb={2}>
-    <Link to="/add-opportunity">
+      <Flex direction="column" alignItems="center">
+
+      <Flex flexWrap="wrap" justifyContent="center" mt={100} mb={2}>
+    <Link to="/Candidature">
     <Button
   mt="2"
   mr="2"
   mb="2"
   borderRadius="15px"
-color="red"
-
+  backgroundColor="#005D14"
+  color="white"
+  _hover={{ backgroundColor: '#004A11' }}
 >
-  Ajouter un stage
+Les candidatures
 </Button>    
 </Link>
-</Flex>
+    
+  </Flex>
+
       <Card className="combined-card" boxShadow="0 4px 8px rgba(0, 0, 0, 0.5)" mt={150}>
       <CardBody>
         <Stack direction={{ base: 'column', sm: 'row' }} spacing={{ base: '15', sm: '20' }} >
@@ -142,6 +146,7 @@ color="red"
         </Stack>
       </CardBody>
     </Card>
+    </Flex>
       </ChakraProvider>
     </>
   );

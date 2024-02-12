@@ -8,7 +8,7 @@ import logo from './img.png';
 import { AuthContext } from "../auth/authContext";
 import { supabase } from "../../supaBaseClient";
 import { Link, useNavigate } from "react-router-dom";
-import { Flex } from "@chakra-ui/react";
+import { Flex , Button  as ChakraButton} from "@chakra-ui/react";
 
 const Home = () => {
   const { user } = useContext(AuthContext);
@@ -67,7 +67,7 @@ const Home = () => {
       <Flex flexWrap="wrap" justifyContent="center" mt={100} mb={2}>
 
         <Link to="/DisplayStage">
-          <Button
+          <ChakraButton
             mt="2"
             mr="2"
             mb="2"
@@ -77,7 +77,7 @@ const Home = () => {
             _hover={{ backgroundColor: '#004A11' }}
           >
             Les Stages
-          </Button>
+          </ChakraButton>
         </Link>
       </Flex>
 

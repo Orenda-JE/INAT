@@ -109,7 +109,6 @@ function App() {
 
             <Route element={<UnauthenticatedRouter />} >
 
-              <Route path='/compte' element={<Modficompte />} />
               <Route path='/compte2' element={<> <NavBar3/> <Home /></>} />
 
             </Route>
@@ -137,7 +136,6 @@ function App() {
 
 
 
-            <Route path='/DisplayStage0' element={<DisplayStage />} />
 
 
 
