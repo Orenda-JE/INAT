@@ -19,6 +19,7 @@ const getCandidature = async (userId) => {
 
   console.log(opportunityIds+
 "......................");
+  console.log(opportunityIds+"......................");
 
   // Step 2: Fetch the candidatures related to the fetched opportunities
   const { data: fetchedData, error } = await supabase
