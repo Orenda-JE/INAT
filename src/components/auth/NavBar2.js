@@ -16,9 +16,8 @@ const NavBar = () => {
         <h2>UN PÔLE D’EXCELLENCE</h2>
       </div>
       <div className='haute-droit'>
-        <FaCircleUser className='iconinscri' />
-        {/* Use Link instead of anchor tag */}
-        <Link to="/compte">compte</Link>
+      <Link to="/compte2" class="link">         <FaCircleUser /><p className='p'>  compte</p></Link>
+
       </div>
     </nav>
   );

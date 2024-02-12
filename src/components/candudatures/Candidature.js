@@ -29,10 +29,26 @@ function Candidature() {
     <Flex direction="column" alignItems="center">
   <Flex flexWrap="wrap" justifyContent="center" mt={100} mb={2}>
     <Link to="/add-opportunity">
-      <Button mt={2} mr={2} mb={2} borderRadius={15} colorScheme="teal">Ajouter un stage</Button>
-    </Link>
+    <Button
+  mt="2"
+  mr="2"
+  mb="2"
+  borderRadius="15px"
+  backgroundColor="#005D14"
+  color="white"
+  _hover={{ backgroundColor: '#004A11' }}
+>
+  Ajouter un stage
+</Button>    
+</Link>
     <Link to="/DisplayStage">
-      <Button mt={2} mb={2} borderRadius={15} colorScheme="teal" justifyContent={"center"}>Les Stages</Button>
+      <Button mt="2"
+  mr="2"
+  mb="2"
+  borderRadius="15px"
+  backgroundColor="#005D14"
+  color="white"
+  _hover={{ backgroundColor: '#004A11' }}>Les Stages</Button>
     </Link>
   </Flex>
 

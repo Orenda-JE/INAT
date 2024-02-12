@@ -25,7 +25,7 @@ const Footer = ({ text }) => {
       </div>
 
       <div className='contact'>
-        <h4>Contactez nous <br></br>(+216) 00 000 000 </h4>
+        <h4>Contactez nous <br></br>(+216) 71 287 110 </h4>
       </div>
 
       <div className='sec'>
@@ -33,13 +33,11 @@ const Footer = ({ text }) => {
       </div>
 
       <div className='links'>
-      <FaInstagram className='icon1'/>
-      <FaFacebook className='icon2'/>
-      <ImMail4 className='icon3'/>
-
+        <a href='https://www.facebook.com/INATunisie/'><FaFacebook className='icon2'/></a>
+        <a href='https://www.facebook.com/INATunisie/'><FaInstagram className='icon1'/></a>
+        <a href='mailto:dg@inat.ucar.tn '><ImMail4 className='icon3'/></a>
+     
       </div>
-
-
     </div>
   )
   

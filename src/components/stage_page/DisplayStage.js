@@ -1,6 +1,6 @@
 import  { useState, useEffect } from "react";
 import Navigation from "../navigation/Nav";
-import { ChakraProvider, StackItem } from "@chakra-ui/react";
+import { ChakraProvider, Flex, StackItem } from "@chakra-ui/react";
 import Offre from "../offre_componenet/Offre";
 import { getData } from "../lesoffres_DB/getdata";
 import Sidebar from "../sidebar/Sidebar";
@@ -8,6 +8,7 @@ import "./stage.css";
 import { Card, CardBody, Heading, Box, Stack, Text, Divider  ,Icon} from '@chakra-ui/react';
 import { MdOutlineAddBox } from "react-icons/md";
 import { Link } from 'react-router-dom'; // Import Link
+import { Button } from "react-bootstrap";
 
 
 function DisplayStage() {
@@ -78,9 +79,24 @@ function DisplayStage() {
 
   return (
     <>
+    
       <ChakraProvider>
-      <Navigation result={result} query={query} handleChange={handleChange} handleInputChange={handleInputChange} />
 
+      <Navigation result={result} query={query} handleChange={handleChange} handleInputChange={handleInputChange} />
+<Flex flexWrap="wrap" justifyContent="center" mt={100} mb={2}>
+    <Link to="/add-opportunity">
+    <Button
+  mt="2"
+  mr="2"
+  mb="2"
+  borderRadius="15px"
+color="red"
+
+>
+  Ajouter un stage
+</Button>    
+</Link>
+</Flex>
       <Card className="combined-card" boxShadow="0 4px 8px rgba(0, 0, 0, 0.5)" mt={150}>
       <CardBody>
         <Stack direction={{ base: 'column', sm: 'row' }} spacing={{ base: '15', sm: '20' }} >

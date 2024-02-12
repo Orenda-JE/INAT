@@ -29,6 +29,8 @@ import Gestion_compte from "./components/gestion-admin/gestion_compte"
 //maha
 import NavBar from "./components/auth/NavBar";
 import NavBar2 from "./components/auth/NavBar2";
+import NavBar3 from "./components/auth/NavBar3";
+
 import Login from './components/auth/Login';
 
 //hiba
@@ -105,26 +107,17 @@ function App() {
             </Route>
 
 
-
             <Route element={<UnauthenticatedRouter />} >
 
               <Route path='/compte' element={<Modficompte />} />
-              <Route path='/compte2' element={<Home />} />
+              <Route path='/compte2' element={<> <NavBar3/> <Home /></>} />
 
             </Route>
-
-
-
-
 
             <Route path='/DisplayStage' element={<><NavBar2 /><DisplayStage /> <Footer /> </>} />
 
 
-
-
             <Route path='/NavBar' element={<NavBar />} />
-
-
 
           <Route element={<OnlyEntrepriseRouter/>}>
 
@@ -135,7 +128,7 @@ function App() {
 
 
 
-            <Route path='/login' element={<><NavBar /><div className="App"><Login /></div></>} />
+            <Route path='/login' element={<><div className="App"><Login /></div></>} />
 
 
 

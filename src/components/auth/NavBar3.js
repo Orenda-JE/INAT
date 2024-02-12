@@ -17,8 +17,6 @@ const NavBar = () => {
       </div>
       <div className='haute-droit'>
 
-        {/* Use Link instead of anchor tag */}
-        <Link to="/Inscription" class="link">         <FaCircleUser /><p className='p'> Inscription</p></Link>
       </div>
     </nav>
   );

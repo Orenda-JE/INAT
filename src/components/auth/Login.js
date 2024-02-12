@@ -33,7 +33,15 @@ const Login = () => {
   useEffect(() => {
     if (user) {
       localStorage.setItem("user", JSON.stringify(user))
-      navigate("/DisplayStage")
+      if (FormData.userType=="student") {
+        navigate("/DisplayStage2")
+      }
+      else if (FormData.userType=="entreprise") {
+        navigate("/DisplayStage")
+      }
+      else if (FormData.userType=="admin") {
+        navigate("/Gestion_compte")
+      }
     }
   }, [user])
 
