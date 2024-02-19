@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 
 
 import { supabase } from './supaBaseClient';
@@ -51,14 +51,14 @@ const Opportunity = () => {
     // Send the data to the database or perform other actions here
     const filePath = candidature.studentId + "/" + candidature.cv.name + Date.now();
 
-    const { data, error } = await supabase.storage.from("cv").upload(filePath, candidature.cv)
+    const { data } = await supabase.storage.from("cv").upload(filePath, candidature.cv)
 
     if (data) {
       candidature.cv = data.path
       const candidatureResponse = await supabase.from("candidature").insert(candidature)
       console.log("from supabase response : ", candidatureResponse);
 
-      if (candidatureResponse.status == 201) {
+      if (candidatureResponse.status === 201) {
         // redirect the user to the list of candidature
 
         navigate("/DisplayStage")

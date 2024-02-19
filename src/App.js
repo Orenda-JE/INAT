@@ -1,7 +1,7 @@
-import logo from './logo.svg';
+
 import './App.css';
 
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, setUser } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ChakraProvider } from "@chakra-ui/react";
 
@@ -24,7 +24,7 @@ import LoginPage from './Login';
 import Candidature from "./components/candudatures/Candidature";
 import DisplayStage from "./components/stage_page/DisplayStage";
 import DisplayStage2 from "./components/stage_page_student/DisplayStage";
-import Gestion_compte from "./components/gestion-admin/gestion_compte"
+import GestionCompte from "./components/gestion-admin/gestion_compte"
 
 //maha
 import NavBar from "./components/auth/NavBar";
@@ -71,10 +71,11 @@ function App() {
   return (
     <ChakraProvider>
       <Router>
-        <div>
+        
           <Routes>
             {/* <Route path='/login' element={<LoginPage />} /> */}
-            <Route path='/signUp' element={<SignUpPage />} />
+            <Route path='/' element={<SignUpPage />} /> {/* homepage*/}
+           
             <Route element={<UnauthenticatedRouter />} >
               <Route element={<UnactivatedAccountRouter />} >
                 <Route element={<OnlyEntrepriseRouter />}>
@@ -97,13 +98,12 @@ function App() {
           </Route>
             <Route path='/login' element={<><div className="App"><Login /></div></>} />
             <Route path='/Inscription' element={<> <div className="App"><Inscription /> </div> </>} />
-            <Route path='/Gestion_compte' element={<><NavBar2 /> <Gestion_compte /> </>} />
+            <Route path='/Gestion_compte' element={<><NavBar2 /> <GestionCompte /> </>} />
             <Route path='/DisplayStage2' element={<><NavBar2 /> <DisplayStage2 /> </>} />
           </Routes>
-        </div>
+        
       </Router>
     </ChakraProvider >
   );
 }
-
 export default App;

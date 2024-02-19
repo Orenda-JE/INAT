@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react"
-import { Navigate, Outlet, useNavigate } from "react-router-dom"
+import { Navigate, Outlet } from "react-router-dom"
 import { AuthContext } from "../auth/authContext";
 
 
@@ -8,7 +8,7 @@ export const OnlyEntrepriseRouter = () => {
     const [isLoading, setIsLoading] = useState(true);
 
 
-    const navigate=useNavigate();
+    
 
     const {user}=useContext(AuthContext)
 
@@ -33,7 +33,7 @@ export const OnlyEntrepriseRouter = () => {
     }
 
 
-    if(user?.userType=="entreprise") return <Outlet/>
+    if(user?.userType === "entreprise") return <Outlet/>
 
 
     console.log(user+"from only entreprise router");

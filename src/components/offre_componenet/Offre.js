@@ -1,9 +1,8 @@
-import { Card, CardBody, Heading, Stack, Text, CardFooter, Image, Box, Button } from '@chakra-ui/react';
-import { Navigate } from 'react-router-dom';
+import { Card, CardBody, Heading, Stack, Text, CardFooter, Image, Box } from '@chakra-ui/react';
 import { Link } from 'react-router-dom'; // Import Link
 
 
- function Offre({id,img, nom, description, poste, duree, type_du_travaille}) {
+ function Offre({id,img, nom, description, poste}) {
  
   return (
     <div>
