@@ -1,10 +1,8 @@
 import { useContext, useEffect, useState } from "react";
-import { Navigate, Outlet, useLocation, useNavigate } from "react-router-dom"
+import { Navigate, Outlet } from "react-router-dom"
 import { AuthContext } from "../auth/authContext";
 
 export const UnauthenticatedRouter = () => {
-    const navigate = useNavigate();
-    const location = useLocation();
     const { user } = useContext(AuthContext);
     const [isLoading, setIsLoading] = useState(true);
 

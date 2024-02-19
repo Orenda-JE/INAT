@@ -12,7 +12,7 @@ import { AuthContext } from './components/auth/authContext';
 
 
 import Opportunity from './opportunity';
-import AddNewOpportunity from './AddNewOpportunity';
+import AddNewOpportunity from './components/AddNewOpportunity';
 
 import SignUpPage from './SignUpPage';
 import LoginPage from './Login';
@@ -74,84 +74,32 @@ function App() {
         <div>
           <Routes>
             {/* <Route path='/login' element={<LoginPage />} /> */}
-
-
             <Route path='/signUp' element={<SignUpPage />} />
-
-
             <Route element={<UnauthenticatedRouter />} >
               <Route element={<UnactivatedAccountRouter />} >
-
                 <Route element={<OnlyEntrepriseRouter />}>
-
                   <Route path='/add-opportunity' element={<> <NavBar2 /> <AddNewOpportunity /></>} />
-
                 </Route>
-
-
               </Route>
             </Route>
-
-
-
-
             <Route element={<UnauthenticatedRouter />} >
               <Route element={<UnactivatedAccountRouter />} >
-
-
                 <Route path='/opportunity/:stageId' element={<><NavBar2 /><Opportunity /></>} />
-
-
-
               </Route>
             </Route>
-
-
             <Route element={<UnauthenticatedRouter />} >
-
               <Route path='/compte2' element={<> <NavBar3/> <Home /></>} />
-
             </Route>
-
             <Route path='/DisplayStage' element={<><NavBar2 /><DisplayStage /> <Footer /> </>} />
-
-
             <Route path='/NavBar' element={<NavBar />} />
-
           <Route element={<OnlyEntrepriseRouter/>}>
-
           <Route path='/Candidature' element={<><NavBar2 /> <Candidature /></>} />
-
           </Route>
-            
-
-
-
             <Route path='/login' element={<><div className="App"><Login /></div></>} />
-
-
-
             <Route path='/Inscription' element={<> <div className="App"><Inscription /> </div> </>} />
-
-
-
-
-
-
-
-
             <Route path='/Gestion_compte' element={<><NavBar2 /> <Gestion_compte /> </>} />
-
-
-
-
             <Route path='/DisplayStage2' element={<><NavBar2 /> <DisplayStage2 /> </>} />
-
-
-
-
           </Routes>
-
         </div>
       </Router>
     </ChakraProvider >

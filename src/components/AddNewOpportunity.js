@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
-import { supabase } from './supaBaseClient';
+import { supabase } from '../supaBaseClient';
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "./components/auth/authContext";
+import { AuthContext } from "./auth/authContext";
 
 const AddNewOpportunity = () => {
 
@@ -42,7 +42,7 @@ const AddNewOpportunity = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if(user.userType!="entreprise"){
+    if(user.userType!=="entreprise"){
       alert("thsi task is only for entreprises")
       navigate("/DisplayStage")
       return ;
